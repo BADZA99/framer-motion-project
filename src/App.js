@@ -1,10 +1,16 @@
-import './App.css';
 
+import { useState } from 'react';
+import Header from './components/Header';
+import styled from 'styled-components'
+const StyleleMainWrapper=styled.div`
+position:relative;`
 function App() {
+  const [isMenuOpen,setIsMenuOpen]=useState(false);
   return (
-    <div className="App">
-   hello
-    </div>
+    <StyleleMainWrapper>
+      <Header  isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>
+    </StyleleMainWrapper>
+    
   );
 }
 

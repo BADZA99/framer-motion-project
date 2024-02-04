@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+
 import App from './App';
 import {createGlobalStyle} from 'styled-components';
 import reset from 'styled-reset';
@@ -18,6 +18,9 @@ const GlobalStyle = createGlobalStyle`
  }
  html, body {
  cursor: none;
+//  background:#e1dfdd;
+ background:#000;
+
  }
  * {
  min-height: 0;
