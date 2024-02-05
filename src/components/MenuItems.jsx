@@ -46,7 +46,8 @@ const StyledProjectItem = styled.a`
 
 
 const MenuItems = ({
-    name,bgcolor,src,innerRef,outerRef,backgroundRef
+    name,bgcolor,src,innerRef,outerRef,backgroundRef,
+    projectsRef
 }) => {
     useLayoutEffect(()=>{
         document.body.style.overflow="hidden";
@@ -115,6 +116,19 @@ const MenuItems = ({
         autoAlpha:1,
       },0)
     };
+
+    const handleMouseMove=(event)=>{
+      const {clientX,clientY}=event;
+     const bound=projectsRef.current.getBoundingClientRect();
+     const xval=clientX-(bound.left + Math.floor(bound.width/2));
+      const yval=clientY-(bound.top + Math.floor(bound.height/2));
+      gsap.to(outerRef.current,{
+        duration:1.2,
+        x:xval,
+        y:yval,
+        ease:"none"
+      })
+    };
     return (
         <StyledProjectItem
         href=""
@@ -123,6 +137,7 @@ const MenuItems = ({
         data-image={src}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        onMouseMove={handleMouseMove}
         >
             <span
             className="project__item--text"
