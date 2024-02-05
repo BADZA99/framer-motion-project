@@ -2,6 +2,7 @@ import React from 'react'
 import projects from './projects';
 import MenuItems from './MenuItems';
 import styled from 'styled-components';
+import { useRef } from 'react';
 
 
 const StyledProjectsContainer = styled.nav`
@@ -50,6 +51,9 @@ const StyledBackground = styled.aside`
     `;
 
 const Menu = ({ isMenuOpen }) => {
+    const innerRef=useRef();
+    const outerRef=useRef();
+    const backgroundRef=useRef();
     return (
         <>{
             isMenuOpen && (
@@ -62,16 +66,19 @@ const Menu = ({ isMenuOpen }) => {
                                 name={project.name}
                                 bgcolor={project.color}
                                 src={project.image}
+                                outerRef={outerRef}
+                                innerRef={innerRef}
+                                backgroundRef={backgroundRef}
                             />
                         ))}
                     </div>
 
-                    {/* <div className="project__image--outer">
-            <div className="project__image--inner">
+                    <div className="project__image--outer" ref={outerRef}>
+            <div className="project__image--inner" ref={innerRef}>
             </div>
-        </div> */}
+        </div>
 
-                    <StyledBackground />
+                    <StyledBackground  ref={backgroundRef}/>
                 </StyledProjectsContainer>
             )
         }
