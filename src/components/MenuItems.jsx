@@ -4,7 +4,7 @@ import gsap from 'gsap'
 const StyledProjectItem = styled.a`
   position: relative;
   margin-bottom: 1rem;
-  font-family: "italiana", serif;
+  font-family: "Italiana", serif;
   cursor: pointer;
   color: #fff;
   will-change: transform;
@@ -19,7 +19,7 @@ const StyledProjectItem = styled.a`
     line-height: 1;
     position: relative;
     font-size: 2rem;
-    font-family: "italiana", serif;
+    font-family: "Italiana", serif;
 
     @media screen and (min-width: 53em) {
       font-size: 7.5vw;
@@ -99,6 +99,22 @@ const MenuItems = ({
       },0)
 
     };
+
+    const handleMouseLeave=(event)=>{
+      const getAllProjectsItems = gsap.utils.toArray(".project__item");
+      const getSiblings = getAllProjectsItems.filter((item) => item !== event.target);
+      const tlLeave = gsap.timeline({
+        defaults: { duration: 1, ease: "none" },
+      });
+      tlLeave.to(outerRef.current,{
+        // duration:1.3,
+        ease:"none",
+        // autoAlpha:0,
+      })
+      .to(getAllProjectsItems,{
+        autoAlpha:1,
+      },0)
+    };
     return (
         <StyledProjectItem
         href=""
@@ -106,6 +122,7 @@ const MenuItems = ({
         data-color={bgcolor}
         data-image={src}
         onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         >
             <span
             className="project__item--text"
