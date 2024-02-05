@@ -68,7 +68,7 @@ const MenuItems = ({
 
     const handleMouseEnter=(event)=>{
       // destructure image,name and color
-      const {color,image,name}=event.currentTarget.dataset;
+      const {color,image}=event.currentTarget.dataset;
       const getAllProjectsItems = gsap.utils.toArray(".project__item");
       const getSiblings = getAllProjectsItems.filter((item) => item !== event.target);
       // create the timeline
@@ -123,7 +123,7 @@ const MenuItems = ({
 
     const handleMouseLeave=(event)=>{
       const getAllProjectsItems = gsap.utils.toArray(".project__item");
-      const getSiblings = getAllProjectsItems.filter((item) => item !== event.target);
+      // const getSiblings = getAllProjectsItems.filter((item) => item !== event.target);
       const tlLeave = gsap.timeline({
         defaults: { duration: 1, ease: "none" },
       });
