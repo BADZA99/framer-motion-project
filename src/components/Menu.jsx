@@ -4,7 +4,7 @@ import MenuItems from './MenuItems';
 import styled from 'styled-components';
 
 
-const StyledProjectsContainer=styled.nav`
+const StyledProjectsContainer = styled.nav`
     position:absolute;
     top:0;
     left:0;
@@ -38,7 +38,7 @@ const StyledProjectsContainer=styled.nav`
                 background-size:cover;
             }
     }`;
-    const StyledBackground = styled.aside`
+const StyledBackground = styled.aside`
     position:fixed;
     top:0;
     left:0;
@@ -48,32 +48,35 @@ const StyledProjectsContainer=styled.nav`
     background-color:#b5B5B2;
     z-index:-1;
     `;
-    
-const Menu = () => {
-  return (
-    <StyledProjectsContainer>
-        <div className='project__wrapper'>
-            {
-                projects.map((project)=>(
-                    <MenuItems 
-                    key={project.id}
-                    name={project.name}
-                    bgcolor={project.color}
-                    src={project.image}
-                    />
-                ))
-            }
-        </div>
 
-        {/* <div className="project__image--outer">
+const Menu = ({ isMenuOpen }) => {
+    return (
+        <>{
+            isMenuOpen && (
+
+                <StyledProjectsContainer>
+                    <div className="project__wrapper">
+                        {projects.map((project) => (
+                            <MenuItems
+                                key={project.id}
+                                name={project.name}
+                                bgcolor={project.color}
+                                src={project.image}
+                            />
+                        ))}
+                    </div>
+
+                    {/* <div className="project__image--outer">
             <div className="project__image--inner">
             </div>
         </div> */}
 
-        <StyledBackground/>
-      
-    </StyledProjectsContainer>
-  )
-}
+                    <StyledBackground />
+                </StyledProjectsContainer>
+            )
+        }
+        </>
+    );
+};
 
 export default Menu
