@@ -23,6 +23,7 @@ padding:0 4vw;
     }
 }
 .header__hamburger{
+  z-index:10;
     cursor:pointer;
     display:bloc;
     span{
