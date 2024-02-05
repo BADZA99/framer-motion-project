@@ -18,8 +18,8 @@ const GlobalStyle = createGlobalStyle`
  }
  html, body {
  cursor: none;
-//  background:#e1dfdd;
- background:#000;
+ background:#e1dfdd;
+//  background:#000;
 
  }
  * {
